@@ -5,7 +5,7 @@
       <li class="nav-item">
         <a class="nav-link profile" routerLink="/user-profile" *ngIf="isLoggedIn" >
           <span>{{username | uppercase}}</span>
-          <img [src]="image" alt="">
+          <img [src]="this.user.image" alt="">
         </a>
       </li>
       <!-- <li class="nav-item">

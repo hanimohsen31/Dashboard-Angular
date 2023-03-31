@@ -26,9 +26,11 @@ export class UserProfileComponent implements OnInit {
         this.user = jwt_decode<any>(response).sub;
         if (response) {
           // change profile pic based on gender
-          if (!this.user.image && this.user.gender == 'female') {
+          if (!this.user.image && this.user.gender == 'male') {
+            this.user.image = 'assets/images/images/ma.png';
+          } else if (!this.user.image && this.user.gender == 'female') {
             this.user.image = 'assets/images/images/fa.png';
-          } else {
+          } else if (!this.user.image && !this.user.gender ){
             this.user.image = 'assets/images/images/ma.png';
           }
         }

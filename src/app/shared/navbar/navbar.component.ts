@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: any = false;
   user: any;
   username: any;
-  image: any;
 
   constructor(private _AuthService: AuthService) {}
 
@@ -26,12 +25,13 @@ export class NavbarComponent implements OnInit {
           this.isLoggedIn = true;
           this.user = jwt_decode<any>(response).sub;
           this.username = this.user?.fname + ' ' + this.user?.lname;
-          this.image = this.user?.image;
           // change profile pic based on gender
-          if (!this.image && this.user.gender == 'female') {
-            this.image = 'assets/images/images/fa.png';
-          } else {
-            this.image = 'assets/images/images/ma.png';
+          if (!this.user.image && this.user.gender == 'male') {
+            this.user.image = 'assets/images/images/ma.png';
+          } else if (!this.user.image && this.user.gender == 'female') {
+            this.user.image = 'assets/images/images/fa.png';
+          } else if (!this.user.image && !this.user.gender ){
+            this.user.image = 'assets/images/images/ma.png';
           }
         }
       },
