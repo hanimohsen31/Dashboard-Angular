@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this._AuthService.isLoggedinObservable.subscribe({
       next: (response: any) => {
-        console.log("response register class loggeedin: " , response)
+        // console.log("response register class loggeedin: " , response)
         this.isLoggedin = response
       },
     });
@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       error: (error) => {
-        console.log(error);
+        (error);
         this.error = error;
       },
     });

@@ -9,13 +9,13 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent {
   title = 'admin-dashboard';
-  
+
   isLoggedin: any = false;
   subscription: Subscription;
   constructor(private _AuthService: AuthService) {
     this.subscription = this._AuthService.isLoggedinObservable.subscribe({
       next: (response: any) => {
-        console.log(response)
+        // console.log(response)
         this.isLoggedin = response;
       },
     });
