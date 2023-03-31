@@ -1,0 +1,77 @@
+<form class="container py-4" [formGroup]="editUserForm" (ngSubmit)="sumbiteForm(editUserForm)">
+  <div class="alert alert-danger" role="alert" *ngIf="error">{{error}}</div>
+
+  <div class="d-flex justify-content-between">
+    <!-- ----------------------------------------- First name ----------------------------------------- -->
+    <div class="mb-3 col-6 pe-2">
+      <label for="fname" class="form-label">First Name</label>
+      <input formControlName="fname" type="text" class="form-control" id="fname" />
+      <div class="alerts my-2" *ngIf="editUserForm.get('fname')?.touched && editUserForm.get('fname')?.errors != null">
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('fname')?.errors?.['required']">This Field is Requirded</div>
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('fname')?.errors?.['minlength']">Min Lenght is 3 chars</div>
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('fname')?.errors?.['maxlength']">Max Lenght is 10 chars</div>
+      </div>
+    </div>
+    <!-- ----------------------------------------- Last name ----------------------------------------- -->
+    <div class="mb-3 col-6 ps-2">
+      <label for="lname" class="form-label">Last Name</label>
+      <input formControlName="lname" type="text" class="form-control" id="lname" />
+      <div class="alerts my-2" *ngIf="editUserForm.get('lname')?.touched && editUserForm.get('lname')?.errors != null">
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('lname')?.errors?.['required']">This Field is Requirded</div>
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('lname')?.errors?.['minlength']">Min Lenght is 3 chars</div>
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('lname')?.errors?.['maxlength']">Max Lenght is 10 chars</div>
+      </div>
+    </div>
+  </div>
+  <!-- ----------------------------------------- User name ----------------------------------------- -->
+  <div class="row">
+    <div class="mb-3 col-6">
+      <label for="uname" class="form-label">User Name</label>
+      <input formControlName="uname" type="text" class="form-control" id="uname" />
+      <div class="alerts my-2" *ngIf="editUserForm.get('uname')?.touched && editUserForm.get('uname')?.errors != null">
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('uname')?.errors?.['required']">This Field is Requirded</div>
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('uname')?.errors?.['minlength']">Min Lenght is 3 chars</div>
+        <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('uname')?.errors?.['maxlength']">Max Lenght is 20 chars</div>
+      </div>
+    </div>
+    <!-- ----------------------------------------- Gender ----------------------------------------- -->
+    <div class="mb-3 col-6">
+      <label for="gender" class="form-label">Gender</label>
+      <select (change)="changeGender($event)" formControlName="gender" class="form-select" aria-label="Gender">
+        <option selected value="male">Male</option>
+        <option value="female">female</option>
+      </select>
+    </div>
+  </div>
+  <!-- ----------------------------------------- Email ----------------------------------------- -->
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input formControlName="email" type="email" class="form-control" id="email" />
+    <div class="alerts my-2" *ngIf="editUserForm.get('email')?.touched && editUserForm.get('email')?.errors != null">
+      <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('email')?.errors?.['required']">This Field is Requirded</div>
+      <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('email')?.errors?.['email']">Enter a Valid Email</div>
+    </div>
+  </div>
+  <!-- ----------------------------------------- Rule ----------------------------------------- -->
+  <div class="mb-3" *ngIf="isAdmin">
+    <label for="rule" class="form-label">Rule</label>
+    <input formControlName="rule" type="rule" class="form-control" id="rule" />
+  </div>
+  <!-- ----------------------------------------- image ----------------------------------------- -->
+  <div class="mb-3">
+    <label for="image" class="form-label">Image</label>
+    <input formControlName="image" type="url" class="form-control" id="image" />
+  </div>
+  <!-- ----------------------------------------- Password ----------------------------------------- -->
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input formControlName="password" type="password" class="form-control" id="password" />
+    <div class="alerts my-2" *ngIf="editUserForm.get('password')?.touched && editUserForm.get('password')?.errors != null">
+      <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('password')?.errors?.['required']">This Field is Requirded</div>
+      <div class="alert alert-danger" role="alert" *ngIf="editUserForm.get('password')?.errors?.['minlength']">Password Must be More Than 5 chars</div>
+    </div>
+  </div>
+  <!-- ----------------------------------------- Submit ----------------------------------------- -->
+  <button [disabled]="editUserForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+  <button class="btn btn-danger mx-2" (click)="cancel()" >Cancel</button>
+</form>

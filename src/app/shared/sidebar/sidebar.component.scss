@@ -1,0 +1,59 @@
+@import "../../../styles.scss";
+
+aside {
+  height: calc(100vh - 50px);
+  width: $side-width;
+  // padding: 1rem 1.5rem 1rem 1.5rem;
+  position: fixed;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  color: #fff;
+  background-image: linear-gradient(320deg, #1a8d9c, #0076c1, #1e4686);
+  a {
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    border-radius: 0 !important;
+    // border-color: blue;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    // padding: 1rem 1rem 0.5rem 0;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-weight: 400;
+      font-size: 17px;
+      color: #fff ;
+    }
+    mat-icon {
+      margin-right: 10px;
+      height: 25px;
+      color: #fff ;
+    }
+  }
+  ul {
+    li {
+      a {
+        &:hover {
+          // background-color: blue;
+          color: white;
+          // border-right: 3.5px solid blue;
+          background-color: #1e4686;
+        }
+      }
+    }
+  }
+  .header {
+    // padding: 0.5rem 1rem 0.5rem 0;
+    padding: 1rem 1.5rem 0 1.5rem;
+  }
+}
+
+.asideFiller {
+  width: $side-width;
+  height: 100%;
+}

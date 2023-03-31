@@ -1,0 +1,104 @@
+<div [class.registerContainer]="!isLoggedin" [class.p-4]="isLoggedin">
+  <div [class.row]="!isLoggedin">
+    <div class="left col-8" *ngIf="!isLoggedin">
+      <img src="assets/images/images/log.jpg" alt="">
+    </div>
+    <div [class.formContainer]="!isLoggedin" [class.col-4]="!isLoggedin">
+      <h2 *ngIf="!isLoggedin">Register</h2>
+      <p *ngIf="!isLoggedin">Welcome to our website</p>
+      <form class="py-4" [formGroup]="registerForm" (ngSubmit)="sumbiteForm(registerForm)">
+        <div class="alert alert-danger" role="alert" *ngIf="error">{{error}}</div>
+        <!-- ----------------------------------------- First name ----------------------------------------- -->
+        <div class="d-flex justify-content-between">
+          <div class="mb-3 pe-2">
+            <label for="fname" class="form-label">First Name</label>
+            <input formControlName="fname" type="text" class="form-control" id="fname" />
+            <div class="alerts my-2"
+              *ngIf="registerForm.get('fname')?.touched && registerForm.get('fname')?.errors != null">
+              <div *ngIf="registerForm.get('fname')?.errors?.['required']">Requirded ...</div>
+              <div *ngIf="registerForm.get('fname')?.errors?.['minlength']">Min 3 chars ...</div>
+              <div *ngIf="registerForm.get('fname')?.errors?.['maxlength']">Max 10 chars ...</div>
+            </div>
+          </div>
+          <!-- ----------------------------------------- Last name ----------------------------------------- -->
+          <div class="mb-3 ps-2">
+            <label for="lname" class="form-label">Last Name</label>
+            <input formControlName="lname" type="text" class="form-control" id="lname" />
+            <div class="alerts my-2"
+              *ngIf="registerForm.get('lname')?.touched && registerForm.get('lname')?.errors != null">
+              <div *ngIf="registerForm.get('lname')?.errors?.['required']">Requirded</div>
+              <div *ngIf="registerForm.get('lname')?.errors?.['minlength']">Min 3 chars ...</div>
+              <div *ngIf="registerForm.get('lname')?.errors?.['maxlength']">Max 10 chars ...</div>
+            </div>
+          </div>
+        </div>
+        <!-- ----------------------------------------- User name ----------------------------------------- -->
+        <div class="mb-3">
+          <label for="uname" class="form-label">User Name</label>
+          <input formControlName="uname" type="text" class="form-control" id="uname" />
+          <div class="alerts my-2"
+            *ngIf="registerForm.get('uname')?.touched && registerForm.get('uname')?.errors != null">
+            <div *ngIf="registerForm.get('uname')?.errors?.['required']">This Field is Requirded</div>
+            <div *ngIf="registerForm.get('uname')?.errors?.['minlength']">Min Lenght is 3 chars</div>
+            <div *ngIf="registerForm.get('uname')?.errors?.['maxlength']">Max Lenght is 20 chars</div>
+          </div>
+        </div>
+        <!-- ----------------------------------------- Gender ----------------------------------------- -->
+        <div class="mb-3">
+          <label for="gender" class="form-label">Gender</label>
+          <select class="form-select" aria-label="Gender">
+            <option selected value="male">Male</option>
+            <option value="female">female</option>
+          </select>
+        </div>
+        <!-- ----------------------------------------- Email ----------------------------------------- -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input formControlName="email" type="email" class="form-control" id="email" />
+          <div class="alerts my-2"
+            *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors != null">
+            <div *ngIf="registerForm.get('email')?.errors?.['required']">This Field is Requirded</div>
+            <div *ngIf="registerForm.get('email')?.errors?.['email']">Enter a Valid Email</div>
+          </div>
+        </div>
+        <!-- ----------------------------------------- image ----------------------------------------- -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Image</label>
+          <input formControlName="image" type="url" class="form-control" id="image" />
+        </div>
+        <!-- ----------------------------------------- Password ----------------------------------------- -->
+        <div class="d-flex justify-content-between">
+          <div class="mb-3 pe-2">
+            <label for="password" class="form-label">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="password" />
+            <div class="alerts my-2"
+              *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors != null">
+              <div *ngIf="registerForm.get('password')?.errors?.['required']">Requirded ...</div>
+              <div *ngIf="registerForm.get('password')?.errors?.['minlength']">At least 5 chars</div>
+            </div>
+          </div>
+          <!-- ----------------------------------------- Confirm Password ----------------------------------------- -->
+          <div class="mb-3 ps-2">
+            <label for="cPassword" class="form-label">Confirm Password</label>
+            <input formControlName="cPassword" type="password" class="form-control" id="cPassword" />
+            <div class="alerts my-2"
+              *ngIf="registerForm.get('cPassword')?.touched && registerForm.get('cPassword')?.errors != null">
+              <div *ngIf="registerForm.get('cPassword')?.errors?.['required']">Requirded ...</div>
+              <div *ngIf="registerForm.get('cPassword')?.errors?.['minlength']">At least 5 chars</div>
+            </div>
+          </div>
+        </div>
+        <div class="alerts">
+          <div
+            *ngIf="registerForm.get('cPassword')?.touched && registerForm.get('cPassword')?.value !== registerForm.get('password')?.value">
+            Password Does not Match</div>
+        </div>
+        <!-- ----------------------------------------- Submit ----------------------------------------- -->
+        <a routerLink="/login" class="text-end w-100">Login ?</a>
+        <button
+          [disabled]="registerForm.invalid || registerForm.get('cPassword')?.value !== registerForm.get('password')?.value"
+          type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

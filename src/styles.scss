@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+$side-width: 240px;
+$navbar-height: 55px;
+$footer-height: 55px;
+
+main {
+  overflow: hidden;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(180, 180, 180);
+}

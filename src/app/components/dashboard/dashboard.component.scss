@@ -1,0 +1,7 @@
+@import "../../../styles.scss";
+
+.dashboard{
+  // height: calc(100vh - $navbar-height - $footer-height);
+  padding-bottom: $navbar-height;
+  // overflow: hidden;
+}

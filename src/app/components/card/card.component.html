@@ -1,0 +1,18 @@
+<div
+  class="card m-3"
+  [class.text-white]="task.status == 'active'"
+  [class.bg-primary]="task.status == 'active'"
+  [class.border-primary]="task.status != 'active'"
+  style="max-width: 18rem"
+>
+  <div class="card-header">{{ task.header }}</div>
+  <div class="card-body" [class.text-primary]="task.status != 'active'">
+    <h5 class="card-title">{{ task.title }}</h5>
+    <p class="card-text">
+      {{ task.desc }}
+    </p>
+  </div>
+</div>
+
+<!-- [container]="text-white bg-primary" || "border-primary" -->
+<!-- [text]="card-body" || "card-body text-primary" -->

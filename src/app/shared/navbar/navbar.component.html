@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <ul class="navbar-nav mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link profile" routerLink="/user-profile" *ngIf="isLoggedIn" >
+          <span>{{username | uppercase}}</span>
+          <img [src]="image" alt="">
+        </a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLink="/login" *ngIf="!isLoggedIn">Login</a>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLink="/register" *ngIf="!isLoggedIn">Register</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" *ngIf="isLoggedIn" (click)="logout()" >
+          <mat-icon>logout</mat-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="navFiller"></div>

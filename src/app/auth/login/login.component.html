@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="left col-7">
+      <img src="assets/images/images/log.jpg" alt="">
+    </div>
+    <div class="formContainer col-5">
+      <h2>
+        <span>USER</span>
+        <span>LOGIN</span>
+      </h2>
+      <p>Welcome to our website</p>
+      <form class="py-4" [formGroup]="loginForm" (ngSubmit)="sumbiteForm(loginForm)">
+        <div class="alert alert-danger" role="alert" *ngIf="error">{{error}}</div>
+        <!-- ----------------------------------------- Email ----------------------------------------- -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input formControlName="email" type="email" class="form-control" id="email" />
+          <div class="alerts my-2" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors != null">
+            <div class="alert alert-danger py-1" role="alert" *ngIf="loginForm.get('email')?.errors?.['required']">This Field is Requirded</div>
+            <div class="alert alert-danger py-1" role="alert" *ngIf="loginForm.get('email')?.errors?.['email']">Enter a Valid Email</div>
+          </div>
+        </div>
+        <!-- ----------------------------------------- Password ----------------------------------------- -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="password" />
+          <div class="alerts my-2" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors != null">
+            <div class="alert alert-danger py-1" role="alert" *ngIf="loginForm.get('password')?.errors?.['required']">This Field is Requirded</div>
+            <div class="alert alert-danger py-1" role="alert" *ngIf="loginForm.get('password')?.errors?.['minlength']">Password Must be More Than 5 chars</div>
+          </div>
+        </div>
+        <!-- ----------------------------------------- Submit ----------------------------------------- -->
+        <a routerLink="/register" class="text-end w-100">Register ?</a>
+        <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

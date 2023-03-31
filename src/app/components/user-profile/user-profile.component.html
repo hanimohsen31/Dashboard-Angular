@@ -1,0 +1,25 @@
+<div class="profile">
+  <div class="row">
+    <div class="left col-4">
+      <h5>Name</h5>
+      <h2>
+        {{ user.fname | uppercase }}
+        {{ user.lname | uppercase }}
+      </h2>
+      <h5>Username</h5>
+      <h2>{{ user.uname | uppercase }}</h2>
+      <h5>E-mail</h5>
+      <h2>{{ user.email | uppercase }}</h2>
+      <h5>Rule</h5>
+      <h2>{{ user.rule | uppercase }}</h2>
+      <h5>Gender</h5>
+      <h2>{{ user.gender | uppercase }}</h2>
+      <button class="btn btn-outline-primary" (click)="editProfile()">
+        Edit Profile
+      </button>
+    </div>
+    <div class="right col-8">
+      <img [src]="user.image" alt="" />
+    </div>
+  </div>
+</div>
