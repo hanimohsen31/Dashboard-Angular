@@ -10,7 +10,7 @@
         <div class="alert alert-danger" role="alert" *ngIf="error">{{error}}</div>
         <!-- ----------------------------------------- First name ----------------------------------------- -->
         <div class="d-flex justify-content-between">
-          <div class="mb-3 pe-2">
+          <div class="mb-3 pe-2 w-50">
             <label for="fname" class="form-label">First Name</label>
             <input formControlName="fname" type="text" class="form-control" id="fname" />
             <div class="alerts my-2"
@@ -21,7 +21,7 @@
             </div>
           </div>
           <!-- ----------------------------------------- Last name ----------------------------------------- -->
-          <div class="mb-3 ps-2">
+          <div class="mb-3 ps-2  w-50">
             <label for="lname" class="form-label">Last Name</label>
             <input formControlName="lname" type="text" class="form-control" id="lname" />
             <div class="alerts my-2"
@@ -68,7 +68,7 @@
         </div>
         <!-- ----------------------------------------- Password ----------------------------------------- -->
         <div class="d-flex justify-content-between">
-          <div class="mb-3 pe-2">
+          <div class="mb-3 pe-2 w-50">
             <label for="password" class="form-label">Password</label>
             <input formControlName="password" type="password" class="form-control" id="password" />
             <div class="alerts my-2"
@@ -78,7 +78,7 @@
             </div>
           </div>
           <!-- ----------------------------------------- Confirm Password ----------------------------------------- -->
-          <div class="mb-3 ps-2">
+          <div class="mb-3 ps-2 w-50">
             <label for="cPassword" class="form-label">Confirm Password</label>
             <input formControlName="cPassword" type="password" class="form-control" id="cPassword" />
             <div class="alerts my-2"
@@ -94,7 +94,7 @@
             Password Does not Match</div>
         </div>
         <!-- ----------------------------------------- Submit ----------------------------------------- -->
-        <a routerLink="/login" class="text-end w-100">Login ?</a>
+        <a routerLink="/login" class="text-end w-100" *ngIf="!isLoggedin">Login ?</a>
         <button
           [disabled]="registerForm.invalid || registerForm.get('cPassword')?.value !== registerForm.get('password')?.value"
           type="submit" class="btn btn-primary">Submit</button>
