@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "dist/get-admin-dashboard",
     "ignore": [
       "firebase.json",
       "**/.*",
